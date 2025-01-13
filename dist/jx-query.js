@@ -3,7 +3,7 @@ var $ = (qs) => {
   if (qs.proxied)
     return qs;
   const el = qs instanceof Element ? qs : document.querySelector(qs);
-  return el ? new Proxy(el, handler) : null;
+  return el ? new Proxy(el, proxyHandler) : null;
 };
 $.ready = (fn) => {
   if (document.readyState === "loading") {
@@ -19,7 +19,7 @@ $.makeGlobal = () => $.ready(() => {
 });
 var $$ = (qsa) => {
   const els = document.querySelectorAll(qsa);
-  return new Proxy(Array.from(els).map((e) => $(e)), handler);
+  return new Proxy(Array.from(els).map((e) => $(e)), proxyHandler);
 };
 var css = function(styles) {
   if (!(this instanceof HTMLElement))
@@ -59,7 +59,7 @@ var handlers = {
   trigger: (target, args) => void target.dispatchEvent(new Event(...args)),
   remove: (target) => target.parentNode?.removeChild.apply(target.parentNode, [target])
 };
-var handler = {
+var proxyHandler = {
   get(target, prop, rec) {
     if (prop === "proxied")
       return true;

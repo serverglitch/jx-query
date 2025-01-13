@@ -68,7 +68,7 @@ const els = $$('a') // returns Element[]
 els.attribute('href') // returns an array of hrefs from all anchor elements
 ```
 
-###### css()
+##### css()
 
 ```typescript
 type css = (styles: string | object) => void
