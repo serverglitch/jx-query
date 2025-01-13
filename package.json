@@ -2,7 +2,11 @@
   "name": "jx-query",
   "description": "A minimal jQuery-like library for DOM manipulation",
   "module": "index.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serverglitch/jx-query.git"
+  },
   "type": "module",
   "files": [
     "dist/**"
