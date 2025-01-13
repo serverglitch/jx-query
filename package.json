@@ -1,0 +1,28 @@
+{
+  "name": "jx-query",
+  "description": "A minimal jQuery-like library for DOM manipulation",
+  "module": "index.ts",
+  "version": "1.0.1",
+  "type": "module",
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/jx-query.min.js",
+  "keywords": [
+    "jQuery",
+    "jQuery-like",
+    "dom",
+    "proxy"
+  ],
+  "scripts": {
+    "bundle": "bun build ./index.ts --outfile=dist/jx-query.js",
+    "minify": "bun build ./dist/jx-query.js --minify --outfile=dist/jx-query.min.js",
+    "build": "bun run bundle && bun run minify && bun run gzip.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
