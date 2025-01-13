@@ -1,7 +1,9 @@
-const $ = (qs: Element | string): Element | null => {
+import type { ElementProxy, ElementArrayProxy, Handler } from './types'
+
+const $: ElementProxy = (qs: Element | string): Element | null => {
   if ((qs as Element & { proxied: boolean }).proxied) return qs as Element
   const el = qs instanceof Element ? qs : document.querySelector(qs as string)
-  return el ? (new Proxy(el, handler) as Element) : null
+  return el ? (new Proxy(el, proxyHandler) as Element) : null
 }
 
 $.ready = (fn: Function) => {
@@ -22,11 +24,11 @@ $.makeGlobal = () =>
     window.$$ = $$
   })
 
-const $$ = (qsa: string): Element[] => {
+const $$: ElementArrayProxy = (qsa: string): Element[] => {
   const els = document.querySelectorAll(qsa)
   return new Proxy(
     Array.from(els).map((e) => $(e)!),
-    handler
+    proxyHandler
   ) as Element[]
 }
 
@@ -77,7 +79,7 @@ const handlers: { [k: string]: Handler } = {
     target.parentNode?.removeChild.apply(target.parentNode, [target])
 }
 
-const handler = {
+const proxyHandler = {
   get(
     target: Element | Element[],
     prop: string,
@@ -101,12 +103,5 @@ const handler = {
     return true
   }
 }
-
-type Target = Element | HTMLElement
-type Handler = (target: Target, ...args: any[]) => any
-declare const window: {
-  $: (qs: Element | string) => Element | null
-  $$: (qsa: string) => Element[]
-} & Window
 
 export { $, $$ }

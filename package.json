@@ -21,7 +21,7 @@
   "scripts": {
     "bundle": "bun build ./index.ts --outfile=dist/jx-query.js",
     "minify": "bun build ./dist/jx-query.js --minify --outfile=dist/jx-query.min.js",
-    "build": "bun run bundle && bun run minify && bun run gzip.ts"
+    "build": "bun run bundle && bun run minify && bun run build.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
