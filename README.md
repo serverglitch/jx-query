@@ -1,5 +1,8 @@
 # jxQuery
 
+[![Bundlephobia](https://badgen.net/bundlephobia/dependency-count/jx-query)](https://bundlephobia.com/result?p=jx-query)
+[![Bundlephobia](https://badgen.net/bundlephobia/minzip/jx-query)](https://bundlephobia.com/result?p=jx-query)
+
 ### Yet another tiny jQuery-alike. If that's the case, why bother?
 
 - It makes use of proxies, exposing the underlying elements when you just want vanilla JS.
