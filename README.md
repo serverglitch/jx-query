@@ -1,6 +1,7 @@
 # jxQuery
 
 [![Bundlephobia](https://badgen.net/bundlephobia/dependency-count/jx-query)](https://bundlephobia.com/result?p=jx-query)
+[![Bundlephobia](https://badgen.net/bundlephobia/min/jx-query)](https://bundlephobia.com/result?p=jx-query)
 [![Bundlephobia](https://badgen.net/bundlephobia/minzip/jx-query)](https://bundlephobia.com/result?p=jx-query)
 
 ### Yet another tiny jQuery-alike. If that's the case, why bother?
